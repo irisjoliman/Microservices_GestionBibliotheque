@@ -1,7 +1,12 @@
+insert into Emprunt (id,isbn,lecteur,datepret,dateretour) values (1,'1234567892',1,'05-02-2020','05-03-2020');
+insert into Emprunt (id,isbn,lecteur,datepret,dateretour) values (2,'1234567892',2,'05-04-2020','05-05-2020');
+insert into Emprunt (id,isbn,lecteur,datepret,dateretour) values (3,'1234567892',3,'06-05-2020','06-06-2020');
 insert into Livre (isbn,auteur,titre,editeur,edition) values('1234567890','dzlbjs','TYUICNDMZISQ','Dunot',2016);
 insert into Livre (isbn,auteur,titre,editeur,edition) values('12345678940','dzlbjs','TYUICNDMZISQ2','Dunot',2016);
 insert into Livre (isbn,auteur,titre,editeur,edition) values('1234567895','dzlbjs','TYUICNDMZISQ3','Dunot',2017);
 insert into Livre (isbn,auteur,titre,editeur,edition) values('1234567894','dzlbjs','TYUICNDMZISQ4','Dunot',2018);
 insert into Livre (isbn,auteur,titre,editeur,edition) values('1234567892','dzlbjs','TYUICNDMZISQ edition Finale','Dunot',2020);
 insert into Livre (isbn,auteur,titre,editeur,edition) values('98765434567','auteur2','Blablabla','Edition1',2020);
-
+insert into Lecteur (id,genre,nom,prenom,datenaissance,adresse) VALUES (1,'F','ARIZANOVA','Simona','05-02-1997','adresse1');
+insert into Lecteur (id,genre,nom,prenom,datenaissance,adresse) VALUES (2,'M','HADI','Ismaïl','05-04-1995','adresse2');
+insert into Lecteur (id,genre,nom,prenom,datenaissance,adresse) VALUES (3,'F','JOLIMAN','Iris','06-05-1998','adresse3');
