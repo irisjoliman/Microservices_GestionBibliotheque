@@ -54,19 +54,18 @@ public class EmpruntController {
         return emprunt;
     }
 	
-	/*@GetMapping("/getEmprunt/Emprunt_En_Cours")
+	@GetMapping("/getEmprunt/Emprunt_En_Cours")
     public List<Emprunt> recupereTousLesEmpruntsEnCours(){
         List<Emprunt> emprunter = repository.findAll();
         List<Emprunt> emprunt_en_cours = new ArrayList<Emprunt>();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		for (Emprunt e : emprunter)
 		{
-			if((Date) e.getDate_Retour()<formatter) {
+			if(e.getDateretour().compareTo("31-12-3000")<0) {
                 emprunt_en_cours.add(e);
             }
 		}
 		return emprunt_en_cours;
-    }*/
+    }
 
 
     @PostMapping("/Emprunt")

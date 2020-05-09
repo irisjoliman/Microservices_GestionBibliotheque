@@ -68,4 +68,29 @@ public class Emprunt {
     public void setDateretour(String dateretour) {
         this.dateretour = dateretour;
     }
+
+	public boolean IsEmpruntExistant(List<Emprunt> emprunts)
+	{
+		boolean emprunter=false;
+		for(Emprunt e: emprunts)
+		{
+			if(this.equals(e))
+				emprunter=true;
+		}
+		return emprunter;
+	}
+	
+	@Override
+    public boolean equals(Object obj){
+        boolean retour = false;
+        if (obj!= null && (obj.getClass().equals(this.getClass()))){
+            if (obj instanceof Emprunt){
+                Emprunt emprunt = (Emprunt)obj;
+                retour = this.getIsbn()==e.getIsbn() && this.getId()==e.getId() && this.getLecteur()==e.getLecteur() && this.getDatepret()==e.getDatepret() && this.getDateretour()==e.getDateretour();
+                }
+            }
+
+        return(retour);
+    }
+
 }
