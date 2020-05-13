@@ -70,6 +70,11 @@ public class Emprunt {
         this.dateretour = dateretour;
     }
 
+    @Override
+    public String toString(){
+        return "id : " + this.id + " ;\n isbn : " + this.isbn + " ;\n lecteur : " + this.lecteur + " ;\n date de pret : " + this.datepret + " ;\n date de retour : " + this.dateretour;
+    }
+
 	public boolean IsEmpruntExistant(List<Emprunt> emprunts)
 	{
 		boolean emprunter=false;

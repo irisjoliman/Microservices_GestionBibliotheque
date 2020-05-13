@@ -31,11 +31,11 @@ public class Lecteur {
         this.adresse = adresse;
     }
 
-    public int getIsbn() {
+    public int getId() {
         return id;
     }
 
-    public void setIsbn(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -77,5 +77,22 @@ public class Lecteur {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    @Override
+    public String toString(){
+        return "id : " + this.id + " ;\n genre : " + this.genre + " ;\n nom : " + this.nom + " ;\n prenom : " + this.prenom + " ;\n date de naissance : " + this.datenaissance + " ;\n adresse : " + this.adresse;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean retour = false;
+        if (obj!= null && (obj.getClass().equals(this.getClass()))){
+            if (obj instanceof Lecteur){
+                Lecteur e = (Lecteur)obj;
+                retour = this.id == e.getId() && this.genre == e.getGenre() && this.nom.equals(e.getNom()) && this.prenom.equals(e.getPrenom()) && this.datenaissance.equals(e.getDatenaissance()) && this.adresse.equals(e.getAdresse());
+            }
+        }
+        return(retour);
     }
 }

@@ -67,4 +67,21 @@ public class Livre {
     public void setEdition(int edition) {
         this.edition = edition;
     }
+
+    @Override
+    public String toString(){
+        return "isbn : " + this.isbn + " ;\n titre : " + this.titre + " ;\n auteur : " + this.auteur + " ;\n editeur : " + this.editeur + " ;\n edition : " + this.edition;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        boolean retour = false;
+        if (obj!= null && (obj.getClass().equals(this.getClass()))){
+            if (obj instanceof Livre){
+                Livre e = (Livre)obj;
+                retour = this.isbn == e.getIsbn() && this.auteur.equals(e.getAuteur()) && this.titre.equals(e.getTitre()) && this.editeur.equals(e.getEditeur()) && this.edition == e.getEdition();
+            }
+        }
+        return(retour);
+    }
 }
