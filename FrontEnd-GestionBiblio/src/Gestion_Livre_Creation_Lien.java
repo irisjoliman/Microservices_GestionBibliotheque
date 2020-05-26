@@ -3,9 +3,6 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,10 +13,11 @@ import javax.swing.JTextField;
 
 public class Gestion_Livre_Creation_Lien extends JPanel {
 	static JFrame f;
-	public Gestion_Livre_Creation_Lien(JTextField isbn,JTextField auteur,JTextField titre,JTextField editeur,JTextField edition) throws IOException {
+	public Gestion_Livre_Creation_Lien(JTextField isbn,JTextField auteur,JTextField titre,JTextField editeur,JTextField edition)
+	{
 		JPanel Jforme = new JPanel(); 
 		Jforme.setLayout(new GridLayout(15, 3));
-		JLabel messAcc = new JLabel("Voici le lien permettant de crï¿½er le livre renseignï¿½ prï¿½cï¿½demment:");
+		JLabel messAcc = new JLabel("Voici le lien permettant de créer le livre renseigné précédemment:");
 		Jforme.add(messAcc, BorderLayout.NORTH); 
 		//this.setLayout(new BorderLayout());
 		JTextArea lien=new JTextArea(
@@ -36,20 +34,10 @@ public class Gestion_Livre_Creation_Lien extends JPanel {
 		lien.setBorder(null);
 		Jforme.add(lien, BorderLayout.CENTER);
 		Jforme.add(new Label(""));
-
-		URL url = new URL("http://localhost:8002/Emprunt");
-		String postData = "foo1=bar1&foo2=bar2";
-
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("POST");
-		conn.setDoOutput(true);
-		conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-		conn.setRequestProperty("Content-Length", Integer.toString(postData.length()));
-		conn.setUseCaches(false);
-
-
-
-		JButton retour =new JButton("Revenir au menu de crï¿½ation de livre");
+		
+		
+		
+		JButton retour =new JButton("Revenir au menu de création de livre");
 		
 		Jforme.add(retour, BorderLayout.SOUTH);
 		this.add(Jforme);
@@ -64,7 +52,7 @@ class ListenerFrame32 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getActionCommand()== "Revenir au menu de crï¿½ation de livre"){
+		if (e.getActionCommand()== "Revenir au menu de création de livre"){
 			
 			Gestion_Livre_Creation.f = new JFrame();
 			Gestion_Livre_Creation.f.add( new Gestion_Livre_Creation());

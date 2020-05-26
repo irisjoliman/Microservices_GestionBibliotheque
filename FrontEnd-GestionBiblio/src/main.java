@@ -15,6 +15,8 @@ public class main {
 		 ApiGateway.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 ApiGateway.f.add(new ApiGateway()); 
 		 ApiGateway.f.setVisible(true);
+	     
+		
 	}
 
 }

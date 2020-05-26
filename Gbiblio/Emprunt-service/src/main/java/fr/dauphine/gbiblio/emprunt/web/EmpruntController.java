@@ -5,18 +5,17 @@ import fr.dauphine.gbiblio.emprunt.model.EmpruntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.net.ssl.SSLEngineResult;
 import java.util.ArrayList;
 import java.util.List;
 
-//      http://localhost:8002/h2-console pour accéder à la base de donnée
-//      http://localhost:8002/getEmprunt/id/1 pour accéder à l'emprunt
-//      http://localhost:8002/getEmprunt/isbn/1234567892 pour accéder aux emprunts associés à un livre
-//      http://localhost:8002/getEmprunt/lecteur/1 pour accéder aux emprunts associés à un lecteur
-//      http://localhost:8002/getEmprunt/Date_Pret/06-05-2020 pour accéder aux emprunts associés à une date d'emprunt
-//      http://localhost:8002/getEmprunt/Date_Retour/05-05-2020 pour accéder aux emprunts associés à une date de retour
-//      http://localhost:8002/getEmprunt/All pour accéder à la liste de tous les emprunts
-//      http://localhost:8002/getEmprunt/Emprunt_En_Cours pour accéder à tous les emprunts en cours
+//      http://localhost:8000/h2-console pour accéder à la base de donnée
+//      http://localhost:8000/getEmprunt/id/1 pour accéder à l'emprunt
+//      http://localhost:8000/getEmprunt/isbn/1234567892 pour accéder aux emprunts associés à un livre
+//      http://localhost:8000/getEmprunt/lecteur/1 pour accéder aux emprunts associés à un lecteur
+//      http://localhost:8000/getEmprunt/Date_Pret/06-05-2020 pour accéder aux emprunts associés à une date d'emprunt
+//      http://localhost:8000/getEmprunt/Date_Retour/05-05-2020 pour accéder aux emprunts associés à une date de retour
+//      http://localhost:8000/getEmprunt/All pour accéder à la liste de tous les emprunts
+//      http://localhost:8000/getEmprunt/Emprunt_En_Cours pour accéder à tous les emprunts en cours
 
 
 @RestController
@@ -71,14 +70,14 @@ public class EmpruntController {
 		return emprunt_en_cours;
     }
 
-    // http://localhost:8002/Emprunt
-    @PostMapping("/Emprunt")
+
+    @PostMapping("/fr.dauphine.gbiblio.emprunt.model.Emprunt")
     public void ajouterEmprunt(@RequestBody Emprunt emprunter){
         repository.save(emprunter);
     }
 	
-	// http://localhost:8002/DelEmprunt/id:2
-    @DeleteMapping("DelEmprunt/id:{id}")
+	
+    @DeleteMapping("fr.dauphine.gbiblio.emprunt.model.Emprunt/id:{id}")
     public void supprimerEmprunt(@PathVariable int id){
         repository.delete(repository.findById(id));
     }

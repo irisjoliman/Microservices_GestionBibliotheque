@@ -1,9 +1,8 @@
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,23 +15,23 @@ public class GestionEmprunt extends JPanel{
 	public GestionEmprunt() {
 		JPanel Jforme = new JPanel(); 
 		 
-		JLabel messAcc = new JLabel("Veuillez choisir le service souhaitï¿½ parmis:");
+		JLabel messAcc = new JLabel("Veuillez choisir le service souhaité parmis:");
 		Jforme.add(messAcc, BorderLayout.NORTH); 
 		this.setLayout(new BorderLayout());
 		JPanel Jbutton = new JPanel();
 		Jbutton.setLayout(new GridLayout(22,3)); 
 		this.add(Jforme , BorderLayout.CENTER); 
-		JButton ajoutEmprunt= new JButton("Effectuer un emprunt ï¿½ la bibliothï¿½que");
-		JButton modifEmprunt= new JButton("Modifier un emprunt de la bibliothï¿½que");
-		JButton suppEmprunt= new JButton("Supprimer un emprunt de la bibliothï¿½que");
-		JButton listTousEmprunt= new JButton("Afficher tous les emprunts de la bibliothï¿½que");
+		JButton ajoutEmprunt= new JButton("Effectuer un emprunt à la bibliothèque");
+		JButton modifEmprunt= new JButton("Modifier un emprunt de la bibliothèque");
+		JButton suppEmprunt= new JButton("Supprimer un emprunt de la bibliothèque");
+		JButton listTousEmprunt= new JButton("Afficher tous les emprunts de la bibliothèque");
 		JButton listIsbnEmprunt= new JButton("Rechercher des emprunts par ISBN");
 		JButton listLecteurEmprunt= new JButton("Rechercher des emprunts par lecteur");
 		JButton listDatePretEmprunt= new JButton("Rechercher des emprunts par date de pret");
 		JButton listDateRetourEmprunt= new JButton("Rechercher des emprunts par date de retour");
 		JButton listIDEmprunt= new JButton("Rechercher des emprunts par identifiant");
 		JButton listEmpruntEnCours= new JButton("Afficher la liste des emprunts en cours");
-		JButton retour= new JButton("Retour ï¿½ l'accueil");
+		JButton retour= new JButton("Retour à l'accueil");
 		Jbutton.add(ajoutEmprunt, BorderLayout.CENTER);
 		Jbutton.add(new Label(""), BorderLayout.CENTER);
 		Jbutton.add(modifEmprunt, BorderLayout.CENTER);
@@ -79,7 +78,7 @@ class ListenerFrame2 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getActionCommand()== "Effectuer un emprunt ï¿½ la bibliothï¿½que"){
+		if (e.getActionCommand()== "Effectuer un emprunt à la bibliothèque"){
 			
 			Gestion_Emprunt_Creation.f = new JFrame();
 			Gestion_Emprunt_Creation.f.add( new Gestion_Emprunt_Creation());
@@ -87,30 +86,23 @@ class ListenerFrame2 extends JFrame implements ActionListener{
 			Gestion_Emprunt_Creation.f.setVisible(true);
 			GestionEmprunt.f.dispose();
 		}
-		if (e.getActionCommand()== "Modifier un emprunt de la bibliothï¿½que"){
+		if (e.getActionCommand()== "Modifier un emprunt de la bibliothèque"){
 	
 			
 		}
-		if (e.getActionCommand()== "Supprimer un emprunt de la bibliothï¿½que"){
+		if (e.getActionCommand()== "Supprimer un emprunt de la bibliothèque"){
 	
 			
 		}
-		if (e.getActionCommand()== "Afficher tous les emprunts de la bibliothï¿½que"){
+		if (e.getActionCommand()== "Afficher tous les emprunts de la bibliothèque"){
 	
-			/*Gestion_Emprunt_Affichage_all.f = new JFrame();
+			Gestion_Emprunt_Affichage_all.f = new JFrame();
 			Gestion_Emprunt_Affichage_all.f.add( new Gestion_Emprunt_Affichage_all());
 			Gestion_Emprunt_Affichage_all.f.setSize(500,500);
 			Gestion_Emprunt_Affichage_all.f.setVisible(true);
-			GestionEmprunt.f.dispose();*/
-			try {
-				Desktop.getDesktop().browse(new URI("http://localhost:8002/getEmprunt/All"));
-			}
-			catch (IOException | URISyntaxException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			GestionEmprunt.f.dispose();
 		}
-		if (e.getActionCommand() == "Rechercher des emprunts par ISBN"){
+		if (e.getActionCommand()== "Rechercher des emprunts par ISBN"){
 	
 			Gestion_Emprunt_Recherche_ISBN.f = new JFrame();
 			Gestion_Emprunt_Recherche_ISBN.f.add( new Gestion_Emprunt_Recherche_ISBN());
@@ -158,7 +150,7 @@ class ListenerFrame2 extends JFrame implements ActionListener{
 			Gestion_Emprunt_Affichage_current.f.setVisible(true);
 			GestionEmprunt.f.dispose();
 		}
-		if (e.getActionCommand()== "Retour ï¿½ l'accueil"){
+		if (e.getActionCommand()== "Retour à l'accueil"){
 	
 			
 			ApiGateway.f = new JFrame();
