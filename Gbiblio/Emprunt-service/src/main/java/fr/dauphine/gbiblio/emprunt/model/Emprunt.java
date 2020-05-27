@@ -74,17 +74,6 @@ public class Emprunt {
     public String toString(){
         return "id : " + this.id + " ;\n isbn : " + this.isbn + " ;\n lecteur : " + this.lecteur + " ;\n date de pret : " + this.datepret + " ;\n date de retour : " + this.dateretour;
     }
-
-	public boolean IsEmpruntExistant(List<Emprunt> emprunts)
-	{
-		boolean emprunter=false;
-		for(Emprunt e: emprunts)
-		{
-			if(this.equals(e))
-				emprunter=true;
-		}
-		return emprunter;
-	}
 	
 	@Override
     public boolean equals(Object obj){

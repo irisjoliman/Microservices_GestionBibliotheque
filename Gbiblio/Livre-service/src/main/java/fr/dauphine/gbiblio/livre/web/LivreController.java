@@ -7,10 +7,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //      http://192.168.99.100:9092/h2-console pour accéder à la base de donnée
-//      http://192.168.99.100:9092/getLivre/isbn/1234567892 pour accéder au livre
+//      http://192.168.99.100:9092/getLivre/isbn/1234567892 pour accéder au livre par isbn
 //      http://192.168.99.100:9092/getLivre/All pour accéder à la liste de tous les livres
 //      http://192.168.99.100:9092/getLivre/auteur/dzlbjs pour accéder à tous les livres d'un certain auteur
-//      http://192.168.99.100:9092/Livre/isbn:
+
+
+//      http://localhost:8000/h2-console pour accéder à la base de donnée
+//      http://localhost:8000/getLivre/isbn/1234567892 pour accéder au livre par isbn
+//      http://localhost:8000/getLivre/All pour accéder à la liste de tous les livres
+//      http://localhost:8000/getLivre/auteur/dzlbjs pour accéder à tous les livres d'un certain auteur
+
 
 @RestController
 public class LivreController {
@@ -35,28 +41,14 @@ public class LivreController {
         List<Livre> livres = repository.findAll();
         return livres;
     }
-/*
-    @PostMapping("/creerLivre/isbn:{isbn}/auteur:{auteur}/titre:{titre}/edieur:{editeur}/edition:{edition}")
-    public ResponseEntity<Object> creerLivre(@PathVariable String isbn, String auteur, String titre, String editeur, int edition){
-        fr.dauphine.gbiblio.livre.model.Livre livre = new fr.dauphine.gbiblio.livre.model.Livre(isbn, auteur, titre, editeur, edition);
-        fr.dauphine.gbiblio.livre.model.Livre livre2 = repository.save(livre);
-        if (livre2 == null){
-            return ResponseEntity.noContent().build();
-        }
-        else{
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{isbn}").buildAndExpand(livre2.getIsbn()).toUri();
-            return ResponseEntity.created(uri).build();
-        }
-    }*/
 
-    @PostMapping("/fr.dauphine.gbiblio.livre.model.Livre")
+    @PostMapping("/Livre")
     public void ajouterLivre(@RequestBody Livre livre){
         repository.save(livre);
     }
 
-    @DeleteMapping("fr.dauphine.gbiblio.livre.model.Livre/isbn:{isbn}")
+    @DeleteMapping("Livre/isbn:{isbn}")
     public void supprimerLivre(@PathVariable String isbn){
         repository.delete(repository.findByIsbn(isbn));
     }
-
 }

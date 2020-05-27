@@ -101,18 +101,4 @@ class EmpruntTest {
         assertEquals(e, empruntter);
     }
 
-    @Test
-    public void isEmpruntExistant_test() {
-        Emprunt empruntbis = new Emprunt(1, "isbnNewTest", 1, "11/05/2020", "22/05/2020");
-        Emprunt empruntter = new Emprunt(0, "isbnTest", 2, "10/05/2020", "16/05/2020");
-        Emprunt empruntNotExistant= new Emprunt(4, "isbnTest4", 2, "10/05/2020", "30/05/2020");
-
-        List<Emprunt> listOfEmprunts = new ArrayList<>();
-        listOfEmprunts.add(e);
-        listOfEmprunts.add(empruntbis);
-        listOfEmprunts.add(empruntter);
-
-        assertTrue(e.IsEmpruntExistant(listOfEmprunts));
-        assertFalse(empruntNotExistant.IsEmpruntExistant(listOfEmprunts));
-    }
 }

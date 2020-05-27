@@ -9,10 +9,19 @@ import java.util.List;
 
 @RestController
 public class LecteurController {
+
     //      http://192.168.99.100:9091/h2-console pour accéder à la base de donnée
-    //      http://192.168.99.100:9091/getLecteur/id:1 pour accéder à l'emprunt
-    //      http://192.168.99.100:9091/getEmprunt/isbn/1234567892 pour accéder aux emprunts associés à un livre
-    //      http://192.168.99.100:9091/getEmprunt/lecteur/1 pour accédleer aux emprunts associés à un lecteur
+    //      http://192.168.99.100:9091/getLecteur/id:1 pour accéder au lecteur par id
+    //      http://192.168.99.100:9091/getLecteur/nom:ARIZANOVA/prenom:Simona pour accéder au lecteur par nom & prenom
+    //      http://192.168.99.100:9091/getLecteur/All pour accéder à tous les lecteurs
+
+
+    //      http://localhost:8001/h2-console pour accéder à la base de donnée
+    //      http://localhost:8001/getLecteur/id:1 pour accéder au lecteur par id
+    //      http://localhost:8001/getLecteur/nom:ARIZANOVA/prenom:Simona pour accéder au lecteur par nom & prenom
+    //      http://localhost:8001/getLecteur/All pour accéder à tous les lecteurs
+
+
 
     @Autowired
     private LecteurRepository repository;
@@ -23,7 +32,7 @@ public class LecteurController {
     }
 
     @GetMapping("/getLecteur/nom:{nom}/prenom:{prenom}")
-    public Lecteur recupereLecteurParNomPrenom(@PathVariable String nom, String prenom){
+    public Lecteur recupereLecteurParNomPrenom(@PathVariable String nom, @PathVariable String prenom){
         return repository.findByNomAndPrenom(nom, prenom);
     }
 
@@ -32,12 +41,12 @@ public class LecteurController {
         return repository.findAll();
     }
 
-    @PostMapping("/fr.dauphine.gbiblio.lecteur.model.Lecteur")
+    @PostMapping("/Lecteur")
     public void ajouterLecteur(@RequestBody Lecteur lecteur){
         repository.save(lecteur);
     }
 
-    @DeleteMapping("fr.dauphine.gbiblio.lecteur.model.Lecteur/id:{id}")
+    @DeleteMapping("Lecteur/id:{id}")
     public void supprimerLecteur(@PathVariable int id){
         repository.delete(repository.findById(id));
     }
