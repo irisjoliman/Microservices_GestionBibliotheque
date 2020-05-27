@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//      http://localhost:8000/h2-console pour accéder à la base de donnée
-//      http://localhost:8000/getEmprunt/id/1 pour accéder à l'emprunt
-//      http://localhost:8000/getEmprunt/isbn/1234567892 pour accéder aux emprunts associés à un livre
-//      http://localhost:8000/getEmprunt/lecteur/1 pour accéder aux emprunts associés à un lecteur
-//      http://localhost:8000/getEmprunt/Date_Pret/06-05-2020 pour accéder aux emprunts associés à une date d'emprunt
-//      http://localhost:8000/getEmprunt/Date_Retour/05-05-2020 pour accéder aux emprunts associés à une date de retour
-//      http://localhost:8000/getEmprunt/All pour accéder à la liste de tous les emprunts
-//      http://localhost:8000/getEmprunt/Emprunt_En_Cours pour accéder à tous les emprunts en cours
+//      http://192.168.99.100:9090/h2-console pour accéder à la base de donnée
+//      http://192.168.99.100:9090/getEmprunt/id/1 pour accéder à l'emprunt
+//      http://192.168.99.100:9090/getEmprunt/isbn/1234567892 pour accéder aux emprunts associés à un livre
+//      http://192.168.99.100:9090/getEmprunt/lecteur/1 pour accédleer aux emprunts associés à un lecteur
+//      http://192.168.99.100:9090/getEmprunt/Date_Pret/06-05-2020 pour accéder aux emprunts associés à une date d'emprunt
+//      http://192.168.99.100:9090/getEmprunt/Date_Retour/05-05-2020 pour accéder aux emprunts associés à une date de retour
+//      http://192.168.99.100:9090/getEmprunt/All pour accéder à la liste de tous les emprunts
+//      http://192.168.99.100:9090/getEmprunt/Emprunt_En_Cours pour accéder à tous les emprunts en cours
 
 
 @RestController
