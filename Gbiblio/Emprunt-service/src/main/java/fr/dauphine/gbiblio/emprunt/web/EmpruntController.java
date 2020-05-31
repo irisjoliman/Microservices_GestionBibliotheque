@@ -48,21 +48,21 @@ public class EmpruntController {
     }
 
     @GetMapping("/getEmprunt/lecteur/{lecteur}")
-    public List<Emprunt> recupereLivreParLecteur(@PathVariable int lecteur){
+    public List<Emprunt> recupereEmpruntParLecteur(@PathVariable int lecteur){
         List<Emprunt> emprunts =  repository.findByLecteur(lecteur);
         if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant un lecteur ayant pour id : " + lecteur + ".");
         return(emprunts);
     }
 
     @GetMapping("/getEmprunt/Datepret/{datepret}")
-    public List<Emprunt> recupereLivreParDatePret(@PathVariable String datepret){
+    public List<Emprunt> recupereEmpruntParDatepret(@PathVariable String datepret){
         List<Emprunt> emprunts= repository.findByDatepret(datepret);
         if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant une date de pret =  " + datepret + ".");
         return emprunts;
     }
 	
 	@GetMapping("/getEmprunt/Dateretour/{dateretour}")
-    public List<Emprunt> recupereLivreParDateretour(@PathVariable String dateretour){
+    public List<Emprunt> recupereEmpruntParDateretour(@PathVariable String dateretour){
         List<Emprunt> emprunts = repository.findByDateretour(dateretour);
         if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant une date de retour =  " + dateretour + ".");
         return emprunts;
