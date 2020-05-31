@@ -1,6 +1,7 @@
 package fr.dauphine.gbiblio.livre.web;
 import fr.dauphine.gbiblio.livre.model.Livre;
 import fr.dauphine.gbiblio.livre.model.LivreRepository;
+import fr.dauphine.gbiblio.livre.web.exceptions.LivreIntrouvableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,18 +28,21 @@ public class LivreController {
     @GetMapping("/getLivre/isbn/{isbn}")
     public Livre recupereLivreParIsbn(@PathVariable String isbn){
         Livre livre = repository.findByIsbn(isbn);
+        if(livre == null) throw new LivreIntrouvableException("Le livre d'isbn : " + isbn + " est introuvable.");
         return livre;
     }
 
     @GetMapping("/getLivre/auteur/{auteur}")
     public List<Livre> recupereLivreParAuteur(@PathVariable String auteur){
         List<Livre> livres = repository.findByAuteur(auteur);
+        if(livres == null) throw new LivreIntrouvableException("Pas de livre de l'auteur : " + auteur + ".");
         return livres;
     }
 
     @GetMapping("/getLivre/All")
     public List<Livre> recupereTousLesLivres(){
         List<Livre> livres = repository.findAll();
+        if(livres == null) throw new LivreIntrouvableException("Pas de livre référencé dans la bibliothèque.");
         return livres;
     }
 

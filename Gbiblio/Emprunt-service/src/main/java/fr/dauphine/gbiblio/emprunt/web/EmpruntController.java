@@ -2,6 +2,7 @@ package fr.dauphine.gbiblio.emprunt.web;
 
 import fr.dauphine.gbiblio.emprunt.model.Emprunt;
 import fr.dauphine.gbiblio.emprunt.model.EmpruntRepository;
+import fr.dauphine.gbiblio.emprunt.web.exceptions.EmpruntIntrouvableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,36 +35,44 @@ public class EmpruntController {
 	
 	@GetMapping("/getEmprunt/id/{id}")
     public Emprunt recupereEmpruntParId(@PathVariable int id){
-        return repository.findById(id);
+        Emprunt emprunt = repository.findById(id);
+        if(emprunt == null) throw new EmpruntIntrouvableException("Pas d'emprunt d'id : " + id + ".");
+        return(emprunt);
     }
 
     @GetMapping("/getEmprunt/isbn/{isbn}")
     public List<Emprunt> recupereEmpruntParIsbn(@PathVariable String isbn){
         List<Emprunt> emprunts = repository.findByIsbn(isbn);
+        if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant un livre ayant pour isbn : " + isbn + ".");
 	    return emprunts;
     }
 
     @GetMapping("/getEmprunt/lecteur/{lecteur}")
     public List<Emprunt> recupereLivreParLecteur(@PathVariable int lecteur){
-        return repository.findByLecteur(lecteur);
+        List<Emprunt> emprunts =  repository.findByLecteur(lecteur);
+        if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant un lecteur ayant pour id : " + lecteur + ".");
+        return(emprunts);
     }
 
     @GetMapping("/getEmprunt/Datepret/{datepret}")
     public List<Emprunt> recupereLivreParDatePret(@PathVariable String datepret){
-        List<Emprunt> emprunt= repository.findByDatepret(datepret);
-        return emprunt;
+        List<Emprunt> emprunts= repository.findByDatepret(datepret);
+        if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant une date de pret =  " + datepret + ".");
+        return emprunts;
     }
 	
 	@GetMapping("/getEmprunt/Dateretour/{dateretour}")
     public List<Emprunt> recupereLivreParDateretour(@PathVariable String dateretour){
-        List<Emprunt> emprunt = repository.findByDateretour(dateretour);
-        return emprunt;
+        List<Emprunt> emprunts = repository.findByDateretour(dateretour);
+        if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt possédant une date de retour =  " + dateretour + ".");
+        return emprunts;
     }
 	
 	@GetMapping("/getEmprunt/All")
     public List<Emprunt> recupereTousLesEmprunts(){
-        List<Emprunt> emprunt = repository.findAll();
-        return emprunt;
+        List<Emprunt> emprunts = repository.findAll();
+        if(emprunts == null) throw new EmpruntIntrouvableException("Pas d'emprunt référencé dans la bibliothèque.");
+        return emprunts;
     }
 	
 	@GetMapping("/getEmprunt/Emprunt_En_Cours")
@@ -76,6 +85,7 @@ public class EmpruntController {
                 emprunt_en_cours.add(e);
             }
 		}
+        if(emprunt_en_cours == null) throw new EmpruntIntrouvableException("Pas d'emprunt en cours.");
 		return emprunt_en_cours;
     }
 

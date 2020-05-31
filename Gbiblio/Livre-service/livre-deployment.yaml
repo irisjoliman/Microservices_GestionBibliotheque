@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: livre-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: livre-service
+  template:
+    metadata:
+      labels:
+        app: livre-service
+    spec:
+      containers:
+        - name: livre-service
+          image: livre-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000

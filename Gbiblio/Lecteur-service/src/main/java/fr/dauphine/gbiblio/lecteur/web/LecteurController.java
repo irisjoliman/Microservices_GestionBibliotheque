@@ -2,9 +2,11 @@ package fr.dauphine.gbiblio.lecteur.web;
 
 import fr.dauphine.gbiblio.lecteur.model.Lecteur;
 import fr.dauphine.gbiblio.lecteur.model.LecteurRepository;
+import fr.dauphine.gbiblio.lecteur.web.exceptions.LecteurIntrouvableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,17 +30,24 @@ public class LecteurController {
 
     @GetMapping("/getLecteur/id:{id}")
     public Lecteur recupereLecteurParId(@PathVariable int id){
-        return repository.findById(id);
+
+        Lecteur lecteur =  repository.findById(id);
+        if(lecteur == null) throw new LecteurIntrouvableException("Pas de lecteur d'id : " + id + ".");
+        return(lecteur);
     }
 
     @GetMapping("/getLecteur/nom:{nom}/prenom:{prenom}")
     public Lecteur recupereLecteurParNomPrenom(@PathVariable String nom, @PathVariable String prenom){
-        return repository.findByNomAndPrenom(nom, prenom);
+        Lecteur lecteur = repository.findByNomAndPrenom(nom, prenom);
+        if(lecteur == null) throw new LecteurIntrouvableException("Pas de lecteur nommé : " + nom + " " + prenom + ".");
+        return(lecteur);
     }
 
     @GetMapping("/getLecteur/All")
     public List<Lecteur> recupereTousLesLecteurs(){
-        return repository.findAll();
+        List<Lecteur> lecteurs = repository.findAll();
+        if(lecteurs == null) throw new LecteurIntrouvableException("Pas de lecteur référencé en base.");
+        return(lecteurs);
     }
 
     @PostMapping("/Lecteur")
